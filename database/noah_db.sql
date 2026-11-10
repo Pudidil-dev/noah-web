@@ -148,3 +148,100 @@ CREATE TABLE admin (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
+-- =====================================================================
+-- DATA AWAL
+-- \n = pindah baris, '' = tanda kutip di dalam teks
+-- =====================================================================
+
+-- Konser = contoh jadwal (website fan). Web hanya menampilkan konser yang tanggalnya belum lewat.
+INSERT INTO event (jenis, judul, tanggal, kota, venue, deskripsi, label) VALUES
+('konser',    'Jakarta',  '2027-08-24', 'Jakarta',  'JIExpo Kemayoran',           'Malam karya NOAH dengan sesi arsip visual, bernyanyi bersama, dan ruang temu Sahabat.', 'Tersedia'),
+('konser',    'Bandung',  '2027-09-12', 'Bandung',  'SABUGA',                     'Temu Sahabat NOAH Bandung dengan pemutaran arsip konser dan sesi musik akustik.', 'Tersedia'),
+('konser',    'Surabaya', '2027-10-03', 'Surabaya', 'Grand City Convention Hall', 'Malam tribut NOAH bersama komunitas regional dan kurasi lagu lintas era.', 'Tersedia'),
+('arsip',     '6 Kota dalam 24 Jam (2004)', NULL,    'Medan, Padang, Pekanbaru, Lampung, Semarang, Surabaya', NULL, NULL, 'EVENT BERSEJARAH'),
+('arsip',     '5 Negara dalam 24 Jam', '2012-11-15', 'Melbourne, Hong Kong, Kuala Lumpur, Singapore, Jakarta', NULL, NULL, NULL),
+('arsip',     'Tur AS (2015)', NULL,                 'Los Angeles, San Francisco, Washington DC, New York', NULL, NULL, 'TUR DUNIA'),
+('komunitas', 'Sahabat NOAH Nasional', '2024-10-24', 'Jakarta', NULL, 'Pertemuan akbar tahunan seluruh komunitas wilayah di Jakarta. Sesi bermain musik bersama, diskusi, dan kejutan spesial.', 'Gathnas 2024'),
+-- tahun 2024 perkiraan, di HTML hanya tertulis "12 November"
+('komunitas', 'Lokakarya Musik & Kopi', '2024-11-12', 'Bandung', NULL, 'Bedah instrumen lagu-lagu NOAH bersama musisi lokal dan sesi berbagi antar Sahabat.', NULL);
+
+INSERT INTO setlist (judul, venue, tanggal, tamu, lagu_utama, lagu_encore) VALUES
+('The Great Journey of NOAH - Jakarta (2023)', 'Ancol Beach City International Stadium', '2023-12-03', 'Reza (Drummer Asli)',
+ 'Topeng\nAda Gajah Dibalik Batu (Intro)\nSeparuh Aku\nMungkin Nanti\nMenghapus Jejakmu\nTak Bisakah\nYang Terdalam\nBintang di Surga\nKhayalan Tingkat Tinggi\nWanitaku',
+ 'Walau Habis Terang\nMimpi Yang Sempurna'),
+('Tur Dunia 2015 - Los Angeles (AS)', NULL, NULL, NULL, NULL, NULL),
+('Asia Song Festival - Busan (Korea)', NULL, NULL, NULL, NULL, NULL);
+
+INSERT INTO album (judul, tahun_rilis, kategori, jumlah_lagu, lagu_unggulan, foto_album) VALUES
+('Keterkaitan Keterikatan',    2019, 'Studio',    8,  'Wanitaku\nKupeluk Hatimu\nMendekati Lugu',                 'images/album-1.jpg'),
+('Second Chance',              2014, 'Studio',    12, 'Hero\nSeperti Kemarin\nSuara Pikiranku',                   'images/album-2.jpg'),
+('Sings Legends',              2016, 'Kompilasi', 9,  'Andaikan Kau Datang\nSajadah Panjang\nBiarlah Sendiri',    'images/album-3.jpg'),
+('Seperti Seharusnya',         2012, 'Studio',    10, 'Separuh Aku\nHidup Untukmu, Mati Tanpamu\nJika Engkau',    'images/album-cover.jpg'),
+('Bintang di Surga',           2004, 'Studio',    10, 'Mungkin Nanti\nAda Apa Denganmu\nKukatakan Dengan Indah',  'images/gallery-2.jpg'),
+('Sebuah Nama, Sebuah Cerita', 2008, 'Kompilasi', 11, 'Menunggumu\nTak Bisakah\nWalau Habis Terang',              'images/gallery-4.jpg');
+
+INSERT INTO `single` (judul, tahun_rilis, album_asal) VALUES
+('Separuh Aku',             2012, 'Seperti Seharusnya'),
+('Tak Bisakah',             2005, 'OST Alexandria'),
+('Menunggumu',              2008, 'Sebuah Nama, Sebuah Cerita'),
+('Khayalan Tingkat Tinggi', 2004, 'Bintang di Surga'),
+('Wanitaku',                2019, 'Keterkaitan Keterikatan');
+
+INSERT INTO berita (judul, kategori, ringkasan, gambar, tanggal_terbit, jadi_utama) VALUES
+('NOAH Umumkan Hiatus: Apa yang Terjadi Selanjutnya?', 'Pengumuman', 'Setelah dekade penuh kesuksesan, Ariel dan kawan-kawan memutuskan untuk mengambil jeda panjang untuk eksplorasi kreatif baru.', 'images/hero-news.jpg', '2024-01-15', TRUE),
+('Kolaborasi Spesial NOAH dengan Orkestra Nasional', 'Musik', 'Sebuah mahakarya baru yang menggabungkan elemen rock alternatif dengan kemegahan simfoni klasik.', 'images/news-1.jpg', '2024-01-12', FALSE),
+('Tiket Konser ''The Final Show'' Terjual Habis dalam 5 Menit', 'Konser', 'Antusiasme penggemar memuncak menyambut pertunjukan terakhir sebelum masa hiatus resmi dimulai.', 'images/news-2.jpg', '2024-01-08', FALSE),
+('Ariel Berbagi Cerita Dibalik Lirik Lagu Teranyar', 'Pribadi', 'Wawancara eksklusif mengenai proses kreatif dan refleksi perjalanan karir musiknya.', 'images/news-3.jpg', '2024-01-05', FALSE),
+('Dibalik Layar Pembuatan Aransemen Baru "Keterkaitan Keterikatan"', 'Album', 'Eksplorasi sound terbaru NOAH yang menggabungkan elemen orkestra dengan synthesizer modern...', 'images/news-1.jpg', '2024-09-12', FALSE),
+('Pengalaman Tak Terlupakan Tur "The Great Journey" di Singapura', 'Tur', 'Ribuan Sahabat NOAH memadati Star Performing Arts Centre dalam malam yang penuh haru...', 'images/news-2.jpg', '2024-09-05', FALSE),
+('Eksklusif: Sesi Bermusik NOAH Bersama Musisi Legendaris Mancanegara', 'Media', 'Kolaborasi lintas genre yang memberikan warna baru pada lagu-lagu klasik NOAH...', 'images/news-3.jpg', '2024-08-28', FALSE);
+
+INSERT INTO galeri (bagian, gambar, judul, keterangan, jenis, kategori) VALUES
+('di_balik_layar', 'images/gallery-1.jpg', 'Proses Rekaman Studio',    'Melihat lebih dekat pembuatan album terakhir.', 'Video', NULL),
+('di_balik_layar', 'images/gallery-2.jpg', 'Momen Belakang Panggung',  'Persiapan sebelum naik ke panggung megah.',     'Foto',  NULL),
+('di_balik_layar', 'images/gallery-3.jpg', 'Pembuatan ''Wanitaku''',   'Eksplorasi desain suara yang mendalam.',        'Video', NULL),
+('galeri_foto', 'images/gallery-1.jpg', NULL, NULL, 'Foto', 'Konser'),
+('galeri_foto', 'images/gallery-2.jpg', NULL, NULL, 'Foto', 'NOAH Era'),
+('galeri_foto', 'images/gallery-3.jpg', NULL, NULL, 'Foto', 'Studio'),
+('galeri_foto', 'images/gallery-4.jpg', NULL, NULL, 'Foto', 'NOAH Era'),
+('galeri_foto', 'images/feed-1.jpg',    NULL, NULL, 'Foto', 'Konser'),
+('galeri_foto', 'images/feed-2.jpg',    NULL, NULL, 'Foto', 'Konser'),
+('galeri_foto', 'images/feed-3.jpg',    NULL, NULL, 'Foto', 'Peterpan Era'),
+('galeri_foto', 'images/feed-4.jpg',    NULL, NULL, 'Foto', 'Studio');
+
+INSERT INTO produk (nama_produk, kategori, deskripsi, harga, gambar, produk_baru, edisi_terbatas, stok) VALUES
+('NOAH Logo Tee Black',                 'Kaos',       'Kaos katun premium dengan logo NOAH minimalis.',            250000, 'images/product-1.jpg', TRUE,  FALSE, NULL),
+('NOAH Logo Tee White',                 'Kaos',       'Varian warna putih ikonik untuk tampilan bersih.',          250000, 'images/product-2.jpg', FALSE, FALSE, NULL),
+('Bintang di Surga Anniversary Hoodie', 'Hoodie',     'Edisi spesial perayaan album legendaris.',                  550000, 'images/product-3.jpg', FALSE, TRUE,  NULL),
+('NOAH Snapback Cap',                   'Aksesoris',  'Topi snapback kualitas premium dengan bordir 3D.',          185000, 'images/product-4.jpg', FALSE, FALSE, NULL),
+('Keterkaitan Keterikatan Vinyl',       'CD & Vinyl', 'Piringan hitam kualitas audiophile untuk kolektor.',        450000, 'images/product-5.jpg', FALSE, FALSE, NULL),
+('NOAH Tote Bag',                       'Aksesoris',  'Tas kanvas tebal tahan lama untuk kegiatan sehari-hari.',   120000, 'images/product-6.jpg', FALSE, FALSE, NULL),
+('Box Set Edisi Terbatas',              'CD & Vinyl', 'Paket eksklusif berisi 3 vinyl, buku foto dokumentasi tur, dan sertifikat keaslian bertandatangan personil.', 1500000, 'images/limited-1.jpg', FALSE, TRUE, 23),
+('Peterpan Legacy Tee',                 'Kaos',       'Kaos edisi khusus mengenang perjalanan awal karir dengan desain grafis arsip original tahun 2003.', 350000, 'images/limited-2.jpg', FALSE, TRUE, 12);
+
+-- email contoh, aslinya tidak ada di HTML
+INSERT INTO kiriman_sahabat (nama_lengkap, email, kota, kategori, pesan, foto, status) VALUES
+('Andhika Prasetya', 'contoh1@example.com', 'Jakarta',  'Cerita Penggemar', 'NOAH mengubah hidup saya. Lirik-liriknya selalu menemani saat saya berada di titik terendah.', 'images/fan-1.jpg', 'tampil'),
+('Siti Rahma',       'contoh2@example.com', 'Bandung',  'Cerita Penggemar', 'Menemukan keluarga baru di komunitas ini. Sahabat NOAH Bandung sangat suportif dan kreatif.', 'images/fan-2.jpg', 'tampil'),
+('Reza Kurniawan',   'contoh3@example.com', 'Surabaya', 'Cerita Penggemar', 'Koleksi produk resmi saya sudah mencapai 100 item. Semua berawal dari kecintaan pada melodi Ariel.', 'images/fan-3.jpg', 'tampil'),
+('Dewi Lestari',     'contoh4@example.com', NULL, 'Karya Penggemar', 'Ilustrasi digital terinspirasi sampul album NOAH.', 'images/artwork-1.jpg', 'tampil'),
+('Fajar Nugroho',    'contoh5@example.com', NULL, 'Karya Penggemar', 'Foto still life gitar dan ampli, tribut untuk Lukman.', 'images/artwork-2.jpg', 'tampil'),
+('Nadia Putri',      'contoh6@example.com', NULL, 'Karya Penggemar', 'Desain ulang logo NOAH dengan gaya tajam.', 'images/artwork-3.jpg', 'tampil'),
+('Bagas Saputra',    'contoh7@example.com', NULL, 'Karya Penggemar', 'Lukisan digital Ariel di atas panggung.', 'images/artwork-4.jpg', 'tampil');
+
+INSERT INTO anggota (nama, posisi, deskripsi, foto) VALUES
+('Ariel',  'Vokal / Frontman', 'Sang visioner dan penulis lirik utama yang suaranya telah menjadi lagu tema bagi jutaan orang.', 'images/member-ariel.jpg'),
+('Lukman', 'Gitar',            'Arsitek melodi gitar yang memberikan nuansa atmosferik khas pada setiap lagu NOAH.',             'images/member-lukman.jpg'),
+('David',  'Keyboard',         'Master harmonisasi yang membawa sentuhan modern lewat permainan keyboard yang elegan.',          'images/member-david.jpg');
+
+INSERT INTO komunitas_regional (kota, jumlah_anggota, ketua) VALUES
+('Jakarta',    8420, 'Hendry Kusuma'),
+('Bandung',    6150, 'Asep Kurnia'),
+('Surabaya',   4890, 'Budi Santoso'),
+('Yogyakarta', 3720, 'Rarasati'),
+('Medan',      2900, 'Iwan Ginting'),
+('Makassar',   2140, 'Zulkifli');
+
+-- akun latihan: username admin, password admin (ganti sebelum website dipasang online)
+INSERT INTO admin (username, password) VALUES
+('admin', '$2y$10$jTHkgqkFvjlUziCFIwexuuL2Jg3.hYUGg.z2b1eOAbBmhf.Kq4.oq');
