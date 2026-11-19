@@ -2,7 +2,7 @@
 // =====================================================
 // HALAMAN BERANDA
 // Data dari database: event (konser), berita
-// Form belum aktif: menunggu WBS 3.5.
+// Form: berlangganan email -> proses/simpan-email.php
 // =====================================================
 
 // 1. Sambungkan ke database
@@ -179,11 +179,11 @@ include 'bagian/header.php';
         <?php } ?>
 
         <!-- Form buletin: dikirim ke proses/simpan-email.php -->
-        <form class="newsletter" action="#" method="post"><p class="wbs-form-note">Penyimpanan form belum tersedia (WBS 3.5).</p><fieldset disabled class="wbs-form-pending">
+        <form class="newsletter" action="proses/simpan-email.php" method="post">
           <input type="email" name="email" placeholder="Alamat Email Anda" required>
           <input type="hidden" name="asal_form" value="beranda">
           <button type="submit" class="btn btn-merah">Berlangganan</button>
-        </fieldset></form>
+        </form>
       </div>
 
       <div class="galeri">

@@ -1909,7 +1909,3 @@ a.page-btn {
   margin-top: 12px;
   width: 100%;
 }
-
-/* Form menunggu implementasi WBS 3.5. */
-.wbs-form-pending { border: 0; margin: 0; padding: 0; min-width: 0; display: contents; }
-.wbs-form-note { font-size: .85rem; }

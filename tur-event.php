@@ -2,7 +2,8 @@
 // =====================================================
 // HALAMAN EVENT
 // Data dari database: event (konser & arsip), setlist
-// Form belum aktif: menunggu WBS 3.5.
+// Form: "Beritahu Saya"  -> proses/simpan-email.php
+//       Pemesanan        -> proses/simpan-pemesanan.php
 // =====================================================
 
 include 'koneksi.php';
@@ -43,11 +44,11 @@ include 'bagian/header.php';
         <p class="pesan-form gagal">Format email salah. Coba lagi.</p>
       <?php } ?>
 
-      <form class="banner-form" action="#" method="post"><p class="wbs-form-note">Penyimpanan form belum tersedia (WBS 3.5).</p><fieldset disabled class="wbs-form-pending">
+      <form class="banner-form" action="proses/simpan-email.php" method="post">
         <input type="email" name="email" placeholder="Alamat Email Anda" required>
         <input type="hidden" name="asal_form" value="event">
         <button type="submit" class="btn btn-outline-putih">Beritahu Saya</button>
-      </fieldset></form>
+      </form>
     </div>
   </section>
 
@@ -214,7 +215,7 @@ include 'bagian/header.php';
         <?php } ?>
 
         <!-- Setiap input punya atribut name. Nama ini yang dibaca di proses/simpan-pemesanan.php -->
-        <form class="form" action="#" method="post"><p class="wbs-form-note">Penyimpanan form belum tersedia (WBS 3.5).</p><fieldset disabled class="wbs-form-pending">
+        <form class="form" action="proses/simpan-pemesanan.php" method="post">
           <div class="form-baris">
             <input type="text" name="nama_organisasi" placeholder="Nama Organisasi" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -236,7 +237,7 @@ include 'bagian/header.php';
           <input type="text" name="rentang_anggaran" placeholder="Rentang Anggaran (Opsional)">
           <textarea name="catatan" rows="4" placeholder="Catatan Tambahan"></textarea>
           <button type="submit" class="btn btn-merah lebar">Kirim Pertanyaan</button>
-        </fieldset></form>
+        </form>
       </div>
 
       <!-- Info kontak (tetap statis) -->

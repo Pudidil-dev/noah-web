@@ -3,3 +3,11 @@ Thumbs.db
 .vscode/
 .idea/
 *.zip
+
+# Foto yang diunggah pengguna atau admin
+/images/kiriman-*.jpg
+/images/kiriman-*.png
+/images/kiriman-*.webp
+/images/berita-*.jpg
+/images/berita-*.png
+/images/berita-*.webp

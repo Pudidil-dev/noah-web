@@ -2,7 +2,7 @@
 // =====================================================
 // HALAMAN SAHABAT NOAH
 // Data dari database: kiriman_sahabat, komunitas_regional, event (komunitas)
-// Form belum aktif: menunggu WBS 3.5.
+// Form: kirim cerita/karya -> proses/simpan-kiriman.php
 // =====================================================
 
 include 'koneksi.php';
@@ -195,7 +195,7 @@ include 'bagian/header.php';
       <?php } ?>
 
       <!-- enctype multipart/form-data wajib supaya form bisa mengirim file foto -->
-      <form class="form" action="#" method="post" enctype="multipart/form-data"><p class="wbs-form-note">Penyimpanan form belum tersedia (WBS 3.5).</p><fieldset disabled class="wbs-form-pending">
+      <form class="form" action="proses/simpan-kiriman.php" method="post" enctype="multipart/form-data">
         <div class="form-baris">
           <div>
             <label for="nama_lengkap">Nama Lengkap</label>
@@ -220,7 +220,7 @@ include 'bagian/header.php';
         <label for="foto">Foto (wajib untuk Karya Penggemar, opsional untuk foto profil cerita)</label>
         <input id="foto" type="file" name="foto" accept="image/jpeg,image/png,image/webp">
         <button type="submit" class="btn btn-merah lebar">Kirim</button>
-      </fieldset></form>
+      </form>
     </div>
   </section>
 
