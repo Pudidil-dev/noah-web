@@ -13,6 +13,7 @@ $menu_admin = [
     ''          => ['Dashboard', 'index.php'],
     'berita'    => ['Berita', 'berita/index.php'],
     'event'     => ['Event', 'event/index.php'],
+    'produk'    => ['Produk Toko', 'produk/index.php'],
     'kiriman'   => ['Kiriman Sahabat', 'kiriman/index.php'],
     'pemesanan' => ['Pemesanan', 'pemesanan/index.php'],
     'pelanggan' => ['Pelanggan Email', 'pelanggan/index.php'],

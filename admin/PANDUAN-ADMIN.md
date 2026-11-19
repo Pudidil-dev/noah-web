@@ -47,6 +47,15 @@ mengadaptasi `dist/starter.html` dan dipakai bersama oleh halaman berita, event,
 kiriman sahabat, pemesanan, serta pelanggan email. CSS dan JavaScript disimpan
 lokal, jadi tampilan admin dapat dipakai tanpa CDN.
 
+### Kelola Produk Toko
+
+Buka **Produk Toko** dari sidebar. Folder `produk/` memakai pola yang sama
+dengan Berita: `index.php` menampilkan daftar, `tambah.php` dan `edit.php`
+memakai `_form.php`, `_data.php` memeriksa isian, dan `hapus.php` meminta
+konfirmasi. Perubahan langsung masuk ke tabel `produk` yang dibaca `toko.php`.
+Foto wajib untuk produk baru. Untuk produk edisi terbatas, stok kosong
+menyembunyikan info stok dan stok 0 menampilkan **Habis**.
+
 ## Alur tiap operasi
 
 ### Login

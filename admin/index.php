@@ -7,6 +7,7 @@ wajib_login();
 $tabel = [
     'berita'          => 'Berita',
     'event'           => 'Event',
+    'produk'          => 'Produk Toko',
     'kiriman_sahabat' => 'Kiriman Sahabat',
     'pemesanan_event' => 'Pemesanan Event',
     'pelanggan_email' => 'Pelanggan Email',
@@ -33,6 +34,7 @@ require __DIR__ . '/_atas.php';
 $kartu_admin = [
     'Berita'          => ['berita/index.php', 'text-bg-primary'],
     'Event'           => ['event/index.php', 'text-bg-success'],
+    'Produk Toko'     => ['produk/index.php', 'text-bg-info'],
     'Kiriman Sahabat' => ['kiriman/index.php', 'text-bg-warning'],
     'Pemesanan Event' => ['pemesanan/index.php', 'text-bg-info'],
     'Pelanggan Email' => ['pelanggan/index.php', 'text-bg-secondary'],

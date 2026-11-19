@@ -181,7 +181,7 @@ include 'bagian/header.php';
             <div class="le-isi">
               <div class="le-head">
                 <span class="label-emas">TERBATAS</span>
-                <?php if ($terbatas['stok'] != '') { ?>
+                <?php if ($terbatas['stok'] !== null) { ?>
                   <?php if ($terbatas['stok'] > 0) { ?>
                     <span class="link-merah">Sisa <?php echo $terbatas['stok']; ?> item</span>
                   <?php } else { ?>
