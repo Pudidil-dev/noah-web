@@ -58,3 +58,57 @@ function cek_token(): void
         die('Form kedaluwarsa. Kembali dan coba kirim ulang.');
     }
 }
+
+/** Simpan pesan singkat untuk ditampilkan sekali di halaman berikutnya. */
+function set_pesan(string $pesan): void
+{
+    $_SESSION['pesan'] = $pesan;
+}
+
+function ambil_pesan(): string
+{
+    $pesan = $_SESSION['pesan'] ?? '';
+    unset($_SESSION['pesan']);
+    return $pesan;
+}
+
+/**
+ * Upload satu gambar ke folder images/.
+ * Mengembalikan path seperti "images/berita-1730390000.jpg",
+ * string kosong kalau tidak ada file yang dipilih,
+ * atau melempar Exception kalau file tidak valid.
+ */
+function upload_gambar(string $nama_input, string $awalan): string
+{
+    $file = $_FILES[$nama_input] ?? null;
+
+    if (!$file || $file['error'] === UPLOAD_ERR_NO_FILE) {
+        return '';
+    }
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        throw new Exception('Upload gagal. Coba file lain.');
+    }
+    if ($file['size'] > 2 * 1024 * 1024) {
+        throw new Exception('Ukuran gambar maksimal 2 MB.');
+    }
+
+    // Cek isi file yang sebenarnya, bukan cuma nama/ekstensinya.
+    $tipe_asli = mime_content_type($file['tmp_name']);
+    $ekstensi = [
+        'image/jpeg' => 'jpg',
+        'image/png'  => 'png',
+        'image/webp' => 'webp',
+    ];
+    if (!isset($ekstensi[$tipe_asli])) {
+        throw new Exception('Gambar harus JPG, PNG, atau WEBP.');
+    }
+
+    // Nama file dibuat ulang supaya tidak bentrok dan tidak bisa disisipi nama aneh.
+    $nama_baru = $awalan . '-' . time() . '-' . bin2hex(random_bytes(2)) . '.' . $ekstensi[$tipe_asli];
+    $tujuan = __DIR__ . '/../images/' . $nama_baru;
+
+    if (!move_uploaded_file($file['tmp_name'], $tujuan)) {
+        throw new Exception('Gambar tidak bisa disimpan ke folder images/.');
+    }
+    return 'images/' . $nama_baru;
+}
