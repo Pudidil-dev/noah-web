@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 cek_token();
 
-$id     = (int) ($_POST['id'] ?? 0);
-$status = $_POST['status'] ?? '';
+$id     = (int) (isi_form('id'));
+$status = isi_form('status');
 
 // Status hanya boleh salah satu dari dua pilihan ini
 if ($status !== 'tampil' && $status !== 'menunggu') {

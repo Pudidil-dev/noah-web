@@ -1,4 +1,10 @@
 <?php
+// File ini hanya dipakai lewat halaman admin yang menyertakannya.
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(404);
+    exit;
+}
+
 // Aturan data berita, dipakai bersama oleh tambah.php dan edit.php.
 
 // Pilihan kategori. Diambil dari pill yang ada di HTML website.
@@ -12,10 +18,10 @@ const KATEGORI_BERITA = ['Pengumuman', 'Album', 'Tur', 'Media', 'Musik', 'Konser
 function baca_input_berita(): array
 {
     $data = [
-        'judul'          => trim($_POST['judul'] ?? ''),
-        'kategori'       => $_POST['kategori'] ?? '',
-        'ringkasan'      => trim($_POST['ringkasan'] ?? ''),
-        'tanggal_terbit' => $_POST['tanggal_terbit'] ?? '',
+        'judul'          => trim(isi_form('judul')),
+        'kategori'       => isi_form('kategori'),
+        'ringkasan'      => trim(isi_form('ringkasan')),
+        'tanggal_terbit' => isi_form('tanggal_terbit'),
         'jadi_utama'     => isset($_POST['jadi_utama']) ? 1 : 0,   // checkbox: dicentang = 1
     ];
 

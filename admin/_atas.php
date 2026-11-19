@@ -1,4 +1,10 @@
 <?php
+// File ini hanya dipakai lewat halaman admin yang menyertakannya.
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(404);
+    exit;
+}
+
 // Bagian atas semua halaman admin (setelah login): <head>, judul, dan menu.
 // Sebelum include file ini, isi dulu variabel $judul_halaman.
 ?>
@@ -20,7 +26,10 @@
       <a href="<?= url_admin('kiriman/index.php') ?>">Kiriman</a>
       <a href="<?= url_admin('pemesanan/index.php') ?>">Pemesanan</a>
       <a href="<?= url_admin('pelanggan/index.php') ?>">Pelanggan</a>
-      <a href="<?= url_admin('logout.php') ?>">Keluar (<?= e($_SESSION['admin_username'] ?? '') ?>)</a>
+      <form method="post" action="<?= url_admin('logout.php') ?>">
+        <?= input_token() ?>
+        <button type="submit" class="tombol-keluar">Keluar (<?= e($_SESSION['admin_username'] ?? '') ?>)</button>
+      </form>
     </nav>
   </header>
   <main class="admin-isi">

@@ -17,19 +17,22 @@ Dokumen final 1.2 dan kode frontend disalin dari proyek sumber.
 | 3.2 | index.php, cerita-band.php, diskografi.php: isi dan pembacaan data |
 | 3.3 | tur-event.php, berita-media.php: isi dan pembacaan data |
 | 3.4 | sahabat-noah.php, toko.php: isi dan pembacaan data |
+| 3.5 | proses/: simpan email, pemesanan, dan kiriman; aktifkan form publik |
+| 4.1 | admin/login.php, logout.php, fungsi.php, index.php, admin.css |
+| 4.2 | admin/: dashboard dan halaman kelola data dengan pemeriksaan login |
+| 4.3 | admin/: penguatan sesi, token form, logout POST, dan validasi unggahan |
 
 Audit file aktual: `git log --reverse --stat` atau `git show --stat <hash>`.
 
 ## Batas cakupan dan selisih sumber
 
-- WBS 3.5, 4.1–4.3, dan 5.1–5.3 berstatus Not Started; tidak dibuat commit
-  penyelesaiannya. Folder admin/ dan proses/ tidak disertakan.
-- Form POST frontend ditampilkan dalam fieldset disabled dengan keterangan WBS 3.5.
-  Filter dan pencarian GET tetap aktif.
+- Snapshot CSV mencatat WBS 3.5 dan 4.1–4.3 sebagai Not Started pada saat
+  rekonstruksi awal. Commit lanjutan mengimplementasikan tugas tersebut.
+- WBS 5.1–5.3 belum disertakan.
 - WBS 1.2/2.1 menyebut relasi tabel, tetapi dokumen final dan SQL sumber menyatakan
   13 tabel independen tanpa foreign key. Selisih ini belum diselesaikan.
 - Dokumen rancangan final asli juga menjelaskan fitur admin/form yang berada di
-  luar cakupan repositori ini; isinya dipertahankan sebagai artefak sumber.
+  luar cakupan snapshot awal sampai 3.4; dokumen dipertahankan sebagai artefak sumber.
 - Seed asli mengisi 11 tabel. Contoh INSERT dua tabel form tersedia dalam skrip
   transaksi ROLLBACK, terpisah dari seed agar bukan klaim form sudah terintegrasi.
 - Skrip UPDATE/DELETE adalah contoh SQL manual, bukan fitur admin dan bukan

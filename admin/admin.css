@@ -80,3 +80,13 @@ td img { width: 80px; height: 56px; object-fit: cover; }
 
 /* Tombol di kolom aksi sejajar dengan link Hapus */
 .aksi form { display: inline; margin-right: 6px; }
+
+/* Tombol ini mengikuti tampilan tautan di menu admin. */
+.tombol-keluar {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.tombol-keluar:hover { text-decoration: underline; }

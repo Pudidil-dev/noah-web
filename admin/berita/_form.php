@@ -1,4 +1,10 @@
 <?php
+// File ini hanya dipakai lewat halaman admin yang menyertakannya.
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(404);
+    exit;
+}
+
 // Form berita. Dipakai oleh tambah.php (form kosong) dan edit.php (form berisi data lama).
 // Sebelum include, siapkan: $data (array isi form), $error (array pesan), $tombol (teks tombol).
 ?>

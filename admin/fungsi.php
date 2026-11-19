@@ -2,7 +2,20 @@
 // Fungsi bantu yang dipakai semua halaman admin.
 // Setiap halaman admin cukup menulis: require __DIR__ . '/fungsi.php';
 
+// Browser menyimpan ID sesi dalam cookie. JavaScript tidak perlu membaca cookie ini.
+$https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+ini_set('session.use_strict_mode', '1');
+ini_set('session.use_only_cookies', '1');
+session_set_cookie_params([
+    'path' => admin_base() . '/',
+    'secure' => $https,
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
 session_start();
+
+// Respons admin dapat berisi data pribadi. Minta browser agar tidak menyimpannya.
+header('Cache-Control: no-store');
 require_once __DIR__ . '/../koneksi.php';
 
 /**
@@ -37,6 +50,13 @@ function e(?string $teks): string
     return htmlspecialchars($teks ?? '', ENT_QUOTES, 'UTF-8');
 }
 
+/** Ambil teks dari formulir. Jika isian hilang atau bukan teks, pakai teks kosong. */
+function isi_form(string $nama): string
+{
+    $nilai = $_POST[$nama] ?? '';
+    return is_string($nilai) ? $nilai : '';
+}
+
 /**
  * Token CSRF: kode acak yang disimpan di session dan diselipkan di setiap form.
  * Tujuannya supaya form admin hanya bisa dikirim dari halaman admin sendiri,
@@ -53,7 +73,8 @@ function input_token(): string
 function cek_token(): void
 {
     $token = $_POST['token'] ?? '';
-    if (empty($_SESSION['token']) || !hash_equals($_SESSION['token'], $token)) {
+    // Token harus berupa teks dan sama dengan token yang disimpan di sesi.
+    if (!is_string($token) || empty($_SESSION['token']) || !hash_equals($_SESSION['token'], $token)) {
         http_response_code(400);
         die('Form kedaluwarsa. Kembali dan coba kirim ulang.');
     }
@@ -85,7 +106,7 @@ function upload_gambar(string $nama_input, string $awalan): string
     if (!$file || $file['error'] === UPLOAD_ERR_NO_FILE) {
         return '';
     }
-    if ($file['error'] !== UPLOAD_ERR_OK) {
+    if ($file['error'] !== UPLOAD_ERR_OK || !is_uploaded_file($file['tmp_name'])) {
         throw new Exception('Upload gagal. Coba file lain.');
     }
     if ($file['size'] > 2 * 1024 * 1024) {
@@ -99,12 +120,13 @@ function upload_gambar(string $nama_input, string $awalan): string
         'image/png'  => 'png',
         'image/webp' => 'webp',
     ];
-    if (!isset($ekstensi[$tipe_asli])) {
+    // Cek juga apakah file dapat dikenali sebagai gambar.
+    if (!isset($ekstensi[$tipe_asli]) || @getimagesize($file['tmp_name']) === false) {
         throw new Exception('Gambar harus JPG, PNG, atau WEBP.');
     }
 
     // Nama file dibuat ulang supaya tidak bentrok dan tidak bisa disisipi nama aneh.
-    $nama_baru = $awalan . '-' . time() . '-' . bin2hex(random_bytes(2)) . '.' . $ekstensi[$tipe_asli];
+    $nama_baru = $awalan . '-' . time() . '-' . bin2hex(random_bytes(8)) . '.' . $ekstensi[$tipe_asli];
     $tujuan = __DIR__ . '/../images/' . $nama_baru;
 
     if (!move_uploaded_file($file['tmp_name'], $tujuan)) {

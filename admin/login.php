@@ -12,8 +12,8 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cek_token();
 
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $username = trim(isi_form('username'));
+    $password = isi_form('password');
 
     // 1. Cari admin berdasarkan username.
     $stmt = mysqli_prepare($koneksi, 'SELECT id, username, password FROM admin WHERE username = ?');
@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($admin && password_verify($password, $admin['password'])) {
         // 3. Ganti ID session supaya session lama tidak bisa dipakai orang lain.
         session_regenerate_id(true);
+        // Buang token login agar formulir admin mendapat token baru.
+        $_SESSION = [];
         $_SESSION['admin_id'] = $admin['id'];
         $_SESSION['admin_username'] = $admin['username'];
         header('Location: ' . url_admin('index.php'));

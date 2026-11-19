@@ -1,4 +1,10 @@
 <?php
+// File ini hanya dipakai lewat halaman admin yang menyertakannya.
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(404);
+    exit;
+}
+
 // Aturan data event, dipakai bersama oleh tambah.php dan edit.php.
 
 // Nilai kolom "jenis" => teks yang dilihat admin di dropdown.
@@ -22,13 +28,13 @@ function kosong_jadi_null(string $teks): ?string
 function baca_input_event(): array
 {
     $data = [
-        'jenis'     => $_POST['jenis'] ?? '',
-        'judul'     => trim($_POST['judul'] ?? ''),
-        'tanggal'   => $_POST['tanggal'] ?? '',
-        'kota'      => trim($_POST['kota'] ?? ''),
-        'venue'     => trim($_POST['venue'] ?? ''),
-        'deskripsi' => trim($_POST['deskripsi'] ?? ''),
-        'label'     => trim($_POST['label'] ?? ''),
+        'jenis'     => isi_form('jenis'),
+        'judul'     => trim(isi_form('judul')),
+        'tanggal'   => isi_form('tanggal'),
+        'kota'      => trim(isi_form('kota')),
+        'venue'     => trim(isi_form('venue')),
+        'deskripsi' => trim(isi_form('deskripsi')),
+        'label'     => trim(isi_form('label')),
     ];
 
     $error = [];
