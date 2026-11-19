@@ -32,13 +32,12 @@ $judul_halaman = 'Hapus Pelanggan';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Hapus Pelanggan Email</h1>
-<form class="form-admin" method="post">
+<form class="card card-body form-admin" method="post">
   <?= input_token() ?>
   <p>Yakin ingin menghapus <strong><?= e($pelanggan['email']) ?></strong> dari daftar pelanggan? Data yang dihapus tidak bisa dikembalikan.</p>
-  <div class="tombol-baris">
-    <button type="submit" class="tombol">Ya, Hapus</button>
-    <a class="tombol tombol-abu" href="index.php">Batal</a>
+  <div class="d-flex flex-wrap gap-2 mt-3">
+    <button type="submit" class="btn btn-danger">Ya, Hapus</button>
+    <a class="btn btn-outline-secondary" href="index.php">Batal</a>
   </div>
 </form>
 

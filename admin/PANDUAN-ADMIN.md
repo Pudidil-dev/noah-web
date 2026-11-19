@@ -1,6 +1,6 @@
 # Panduan Admin Panel NOAH
 
-Admin panel ini PHP native, tanpa framework dan tanpa JavaScript. Isinya login, dashboard, dan CRUD lengkap untuk dua tabel: `berita` dan `event`. Dua tabel itu sengaja memakai pola yang sama, jadi untuk tabel lain cukup salin satu folder lalu ganti nama kolomnya.
+Admin panel memakai PHP native dan template AdminLTE v4.10.0. JavaScript bawaan AdminLTE dipakai untuk membuka dan menutup sidebar. Isinya login, dashboard, dan CRUD lengkap untuk dua tabel: `berita` dan `event`. Dua tabel itu sengaja memakai pola yang sama, jadi untuk tabel lain cukup salin satu folder lalu ganti nama kolomnya.
 
 ## Cara menjalankan (XAMPP)
 
@@ -21,7 +21,8 @@ admin/
   fungsi.php           fungsi bantu: cek login, token form, upload gambar
   _atas.php            kepala halaman + menu (di-include)
   _bawah.php           penutup halaman (di-include)
-  admin.css            tampilan
+  admin.css            sedikit tambahan CSS untuk tabel dan form NOAH
+  vendor/adminlte/     CSS, JavaScript, dan lisensi template AdminLTE
   login.php            form login
   logout.php           keluar
   index.php            dashboard: jumlah data tiap tabel
@@ -37,6 +38,14 @@ admin/
 ```
 
 File yang namanya diawali garis bawah (`_form.php`, `_atas.php`) bukan halaman yang dibuka langsung. File ini hanya potongan yang di-`require` oleh halaman lain.
+
+## Tampilan AdminLTE
+
+`login.php` memakai contoh `dist/examples/login.html`. `index.php` memakai
+komponen Small Box untuk jumlah data dari MySQL. `_atas.php` dan `_bawah.php`
+mengadaptasi `dist/starter.html` dan dipakai bersama oleh halaman berita, event,
+kiriman sahabat, pemesanan, serta pelanggan email. CSS dan JavaScript disimpan
+lokal, jadi tampilan admin dapat dipakai tanpa CDN.
 
 ## Alur tiap operasi
 

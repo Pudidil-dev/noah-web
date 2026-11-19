@@ -9,15 +9,15 @@ $judul_halaman = 'Pelanggan Email';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Pelanggan Email</h1>
 <p>Email yang mendaftar untuk kabar terbaru. Kolom "Asal Form" menunjukkan form mana yang dipakai.</p>
 
 <?php if (mysqli_num_rows($hasil) == 0) { ?>
   <p>Belum ada pelanggan.</p>
 <?php } ?>
 
-<div class="tabel-wrap">
-  <table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
     <tr>
       <th>Waktu Daftar</th>
       <th>Email</th>
@@ -29,10 +29,11 @@ require __DIR__ . '/../_atas.php';
         <td><?= e($p['waktu_daftar']) ?></td>
         <td><?= e($p['email']) ?></td>
         <td><?= e($p['asal_form']) ?></td>
-        <td class="aksi"><a href="hapus.php?id=<?= $p['id'] ?>">Hapus</a></td>
+        <td class="aksi"><a class="btn btn-sm btn-outline-danger" href="hapus.php?id=<?= $p['id'] ?>">Hapus</a></td>
       </tr>
     <?php } ?>
-  </table>
+    </table>
+  </div>
 </div>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>

@@ -9,11 +9,11 @@ $judul_halaman = 'Berita';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Berita</h1>
-<p><a class="tombol" href="tambah.php">+ Tambah Berita</a></p>
+<p><a class="btn btn-primary" href="tambah.php">+ Tambah Berita</a></p>
 
-<div class="tabel-wrap">
-  <table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
     <tr>
       <th>Gambar</th>
       <th>Judul</th>
@@ -36,12 +36,13 @@ require __DIR__ . '/../_atas.php';
         <td><?= e($b['tanggal_terbit']) ?></td>
         <td><?= $b['jadi_utama'] ? 'Ya' : '' ?></td>
         <td class="aksi">
-          <a href="edit.php?id=<?= $b['id'] ?>">Edit</a> |
-          <a href="hapus.php?id=<?= $b['id'] ?>">Hapus</a>
+          <a class="btn btn-sm btn-outline-primary" href="edit.php?id=<?= $b['id'] ?>">Edit</a> |
+          <a class="btn btn-sm btn-outline-danger" href="hapus.php?id=<?= $b['id'] ?>">Hapus</a>
         </td>
       </tr>
     <?php endwhile; ?>
-  </table>
+    </table>
+  </div>
 </div>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>

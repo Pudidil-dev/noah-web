@@ -20,6 +20,8 @@ Dokumen final 1.2 dan kode frontend disalin dari proyek sumber.
 | 3.5 | proses/: simpan email, pemesanan, dan kiriman; aktifkan form publik |
 | 4.1 | admin/login.php, logout.php, fungsi.php, index.php, admin.css |
 | 4.2 | admin/: dashboard dan halaman kelola data dengan pemeriksaan login |
+| Revisi 4.1 | Halaman login AdminLTE dan aset lokal di `admin/vendor/adminlte/` |
+| Revisi 4.2 | Kerangka dashboard AdminLTE, kartu, tabel, dan form pengelolaan |
 | 4.3 | admin/: penguatan sesi, token form, logout POST, dan validasi unggahan |
 
 Audit file aktual: `git log --reverse --stat` atau `git show --stat <hash>`.

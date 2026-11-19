@@ -6,6 +6,11 @@ if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
 }
 
 ?>
-  </main>
+        </div>
+      </div>
+    </main>
+    <footer class="app-footer">Panel Admin NOAH</footer>
+  </div>
+  <script src="<?= e(url_admin('vendor/adminlte/adminlte.min.js')) ?>"></script>
 </body>
 </html>

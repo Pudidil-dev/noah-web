@@ -11,11 +11,11 @@ $judul_halaman = 'Event';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Event</h1>
-<p><a class="tombol" href="tambah.php">+ Tambah Event</a></p>
+<p><a class="btn btn-primary" href="tambah.php">+ Tambah Event</a></p>
 
-<div class="tabel-wrap">
-  <table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
     <tr>
       <th>Jenis</th>
       <th>Judul</th>
@@ -32,12 +32,13 @@ require __DIR__ . '/../_atas.php';
         <td><?= e(trim(($ev['kota'] ?? '') . ' / ' . ($ev['venue'] ?? ''), ' /')) ?></td>
         <td><?= e($ev['label']) ?></td>
         <td class="aksi">
-          <a href="edit.php?id=<?= $ev['id'] ?>">Edit</a> |
-          <a href="hapus.php?id=<?= $ev['id'] ?>">Hapus</a>
+          <a class="btn btn-sm btn-outline-primary" href="edit.php?id=<?= $ev['id'] ?>">Edit</a> |
+          <a class="btn btn-sm btn-outline-danger" href="hapus.php?id=<?= $ev['id'] ?>">Hapus</a>
         </td>
       </tr>
     <?php endwhile; ?>
-  </table>
+    </table>
+  </div>
 </div>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>

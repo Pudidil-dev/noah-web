@@ -11,11 +11,11 @@ $judul_halaman = 'Kiriman Sahabat';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Kiriman Sahabat</h1>
 <p>Kiriman baru berstatus <strong>menunggu</strong> dan belum tampil di website. Klik <strong>Tampilkan</strong> supaya muncul di halaman Sahabat NOAH.</p>
 
-<div class="tabel-wrap">
-  <table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
     <tr>
       <th>Waktu</th>
       <th>Nama / Email / Kota</th>
@@ -50,17 +50,18 @@ require __DIR__ . '/../_atas.php';
             <input type="hidden" name="id" value="<?= $k['id'] ?>">
             <?php if ($k['status'] == 'menunggu') { ?>
               <input type="hidden" name="status" value="tampil">
-              <button type="submit" class="tombol">Tampilkan</button>
+              <button type="submit" class="btn btn-sm btn-outline-primary">Tampilkan</button>
             <?php } else { ?>
               <input type="hidden" name="status" value="menunggu">
-              <button type="submit" class="tombol tombol-abu">Sembunyikan</button>
+              <button type="submit" class="btn btn-sm btn-outline-secondary">Sembunyikan</button>
             <?php } ?>
           </form>
-          <a href="hapus.php?id=<?= $k['id'] ?>">Hapus</a>
+          <a class="btn btn-sm btn-outline-danger" href="hapus.php?id=<?= $k['id'] ?>">Hapus</a>
         </td>
       </tr>
     <?php } ?>
-  </table>
+    </table>
+  </div>
 </div>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>

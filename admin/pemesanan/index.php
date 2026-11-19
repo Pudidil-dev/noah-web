@@ -9,15 +9,15 @@ $judul_halaman = 'Pemesanan Event';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Pemesanan Event</h1>
 <p>Data dari form Pemesanan &amp; Kerja Sama di halaman Event. Hubungi pemesan lewat email atau telepon.</p>
 
 <?php if (mysqli_num_rows($hasil) == 0) { ?>
   <p>Belum ada pemesanan.</p>
 <?php } ?>
 
-<div class="tabel-wrap">
-  <table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
     <tr>
       <th>Waktu Kirim</th>
       <th>Organisasi / Kontak</th>
@@ -43,10 +43,11 @@ require __DIR__ . '/../_atas.php';
         <td><?= e($p['venue_lokasi'] ?? '-') ?></td>
         <td><?= e($p['rentang_anggaran'] ?? '-') ?></td>
         <td><?= e($p['catatan'] ?? '-') ?></td>
-        <td class="aksi"><a href="hapus.php?id=<?= $p['id'] ?>">Hapus</a></td>
+        <td class="aksi"><a class="btn btn-sm btn-outline-danger" href="hapus.php?id=<?= $p['id'] ?>">Hapus</a></td>
       </tr>
     <?php } ?>
-  </table>
+    </table>
+  </div>
 </div>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>

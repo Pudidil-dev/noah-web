@@ -26,30 +26,37 @@ $judul_halaman = 'Dashboard';
 require __DIR__ . '/_atas.php';
 ?>
 
-<h1>Dashboard</h1>
 <p>Selamat datang, <?= e($_SESSION['admin_username']) ?>.</p>
 
-<div class="kartu-grid">
-  <?php foreach ($jumlah as $label => $total) : ?>
-    <div class="kartu">
-      <span class="kartu-angka"><?= $total ?></span>
-      <span><?= e($label) ?></span>
+<?php
+// Nama kartu cocok dengan label pada hasil hitung di atas.
+$kartu_admin = [
+    'Berita'          => ['berita/index.php', 'text-bg-primary'],
+    'Event'           => ['event/index.php', 'text-bg-success'],
+    'Kiriman Sahabat' => ['kiriman/index.php', 'text-bg-warning'],
+    'Pemesanan Event' => ['pemesanan/index.php', 'text-bg-info'],
+    'Pelanggan Email' => ['pelanggan/index.php', 'text-bg-secondary'],
+];
+?>
+<div class="row">
+  <?php foreach ($kartu_admin as $label => [$tautan, $warna]) : ?>
+    <div class="col-12 col-sm-6 col-xl-4">
+      <div class="small-box <?= e($warna) ?>">
+        <div class="inner">
+          <h2 class="h3"><?= (int) $jumlah[$label] ?></h2>
+          <p><?= e($label) ?></p>
+        </div>
+        <a class="small-box-footer" href="<?= e($tautan) ?>">Buka <?= e($label) ?> →</a>
+      </div>
     </div>
   <?php endforeach; ?>
 </div>
 
 <?php if ($jumlah_menunggu > 0) : ?>
-  <p class="pesan"><?= $jumlah_menunggu ?> kiriman sahabat menunggu diperiksa. <a href="kiriman/index.php">Periksa sekarang</a></p>
+  <p class="alert alert-warning" role="status">
+    <?= (int) $jumlah_menunggu ?> kiriman sahabat menunggu diperiksa.
+    <a class="alert-link" href="kiriman/index.php">Periksa sekarang</a>
+  </p>
 <?php endif; ?>
-
-<p>
-  <a class="tombol" href="berita/index.php">Kelola Berita</a>
-  <a class="tombol" href="event/index.php">Kelola Event</a>
-  <a class="tombol" href="kiriman/index.php">Kiriman Sahabat</a>
-  <a class="tombol" href="pemesanan/index.php">Pemesanan</a>
-  <a class="tombol" href="pelanggan/index.php">Pelanggan Email</a>
-</p>
-
-<p>Tabel lain (album, single, setlist, galeri, produk, anggota, komunitas regional) diubah lewat phpMyAdmin.</p>
 
 <?php require __DIR__ . '/_bawah.php'; ?>

@@ -27,7 +27,7 @@ Database terdiri atas 13 tabel independen, tanpa foreign key atau JOIN.
 Halaman: Beranda, Cerita Band, Diskografi, Event, Media, Sahabat NOAH, Toko.
 Form berlangganan, pemesanan, dan kiriman menyimpan data ke database (WBS 3.5).
 
-Buka `/admin/` untuk login dan mengelola berita, event, kiriman, pemesanan,
+Buka `/admin/` untuk login ke dashboard AdminLTE v4.10.0 dan mengelola berita, event, kiriman, pemesanan,
 serta pelanggan email. Akun latihan tersedia pada komentar seed di
 `database/noah_db.sql`. Ganti password sebelum memakai aplikasi di luar komputer
 latihan. Folder `images/` perlu dapat ditulis oleh PHP untuk menerima foto.

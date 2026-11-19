@@ -41,7 +41,6 @@ $tombol = 'Simpan';
 require __DIR__ . '/../_atas.php';
 ?>
 
-<h1>Tambah Event</h1>
 <?php require __DIR__ . '/_form.php'; ?>
 
 <?php require __DIR__ . '/../_bawah.php'; ?>
