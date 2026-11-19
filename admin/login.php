@@ -44,25 +44,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Admin NOAH</title>
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="vendor/adminlte/adminlte.min.css">
 </head>
-<body class="halaman-login">
-  <form class="kotak-login" method="post">
-    <h1>Login Admin</h1>
+<body class="login-page bg-body-secondary">
+  <main class="login-box">
+    <div class="login-logo"><a href="../index.php"><b>NOAH</b> Admin</a></div>
+    <div class="card">
+      <div class="card-body login-card-body">
+        <h1 class="h4 mb-3">Login Admin</h1>
+        <?php if ($error !== '') : ?>
+          <p class="alert alert-danger" role="alert"><?= e($error) ?></p>
+        <?php endif; ?>
 
-    <?php if ($error !== '') : ?>
-      <p class="pesan pesan-error"><?= e($error) ?></p>
-    <?php endif; ?>
-
-    <?= input_token() ?>
-
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username" required autofocus>
-
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-
-    <button type="submit" class="tombol">Masuk</button>
-  </form>
+        <form method="post">
+          <?= input_token() ?>
+          <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" id="username" name="username" type="text" autocomplete="username" required autofocus>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Masuk</button>
+        </form>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
